@@ -23,7 +23,7 @@ customer_orders as (
 lifetime_value as (
     select 
         customer_id,
-        sum(amount) as amount
+        sum(amount)/100.0 as amount
     from {{ ref('orders') }}
     where status = 'success'
     group by customer_id
